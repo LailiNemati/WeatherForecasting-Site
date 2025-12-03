@@ -1,4 +1,6 @@
-
+/* ===============================
+   Variables (Light & Dark Theme)
+================================ */
 :root {
   --background-color-light: #f6f9fc;
   --background-color-dark: #0d1117;
@@ -7,30 +9,34 @@
   --accent-color: #2e7d32;
   --accent-hover: #1b5e20;
   --accent-dark: #58a6ff;
+
   --card-bg-light: rgba(255, 255, 255, 0.85);
   --card-bg-dark: rgba(22, 27, 34, 0.9);
 }
 
+/* ===============================
+   Global Styles
+================================ */
 body {
   font-family: "Roboto", sans-serif;
-  background: linear-gradient(135deg, #e8f0fe, #ffffff);
   background-image: url("day-sky.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: var(--text-color-light);
-  transition: background 0.8s ease, color 0.5s ease;
   margin: 0;
   padding: 0;
+  transition: background 0.8s ease, color 0.5s ease;
 }
 
 body.dark {
-  background: linear-gradient(135deg, #0d1117, #161b22);
   background-image: url("night-sky.jpg");
   color: var(--text-color-dark);
-  transition: background 0.8s ease, color 0.5s ease;
 }
 
+/* ===============================
+   Theme Toggle Button
+================================ */
 .theme-toggle {
   text-align: right;
   padding: 15px 25px;
@@ -58,10 +64,14 @@ body.dark #theme-btn {
   background-color: var(--accent-dark);
 }
 
+/* ===============================
+   Weather App Container
+================================ */
 .weather-app {
   background: var(--card-bg-light);
   backdrop-filter: blur(10px);
   max-width: 600px;
+  width: 90%;
   margin: 30px auto;
   padding: 30px;
   border-radius: 18px;
@@ -74,16 +84,24 @@ body.dark .weather-app {
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.6);
 }
 
+/* ===============================
+   Header (Search Form)
+================================ */
 header {
   padding-bottom: 25px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
 }
 
 .search-form-input {
   background-color: #f1f3f6;
   border: none;
   border-radius: 8px;
-  width: 75%;
+  flex: 1;
   font-size: 16px;
   padding: 14px 18px;
 }
@@ -95,9 +113,8 @@ header {
   border-radius: 8px;
   padding: 14px 18px;
   font-size: 16px;
-  margin-left: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
 .search-form-button:hover {
@@ -109,18 +126,15 @@ body.dark .search-form-input {
   color: #f0f6fc;
 }
 
-body.dark .search-form-button {
-  background-color: var(--accent-dark);
-}
-
-body.dark .search-form-button:hover {
-  background-color: #74b3ff;
-}
-
+/* ===============================
+   Weather Info (City, Temp, Details)
+================================ */
 .weather-app-data {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 25px;
+  gap: 20px;
 }
 
 .weather-app-city {
@@ -132,6 +146,10 @@ body.dark .search-form-button:hover {
   color: rgba(0, 0, 0, 0.6);
   font-weight: 500;
   line-height: 24px;
+}
+
+body.dark .weather-app-details {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .weather-app-details strong {
@@ -159,15 +177,21 @@ body.dark .weather-app-details strong {
   top: -25px;
 }
 
+/* ===============================
+   Weather Forecast
+================================ */
 .weather-forecast {
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .weather-forecast-date {
   text-align: center;
-  color: rgba(39, 33, 66, 0.4);
+  font-size: 15px;
+  color: rgba(39, 33, 66, 0.6);
 }
 
 .weather-forecast-temperatures {
@@ -176,12 +200,16 @@ body.dark .weather-app-details strong {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  font-size: 15px;
 }
 
 body.dark .weather-forecast-temperatures {
   color: var(--accent-dark);
 }
 
+/* ===============================
+   Footer
+================================ */
 footer {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 25px;
@@ -192,5 +220,57 @@ footer {
 
 body.dark footer {
   color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===============================
+   📱 Responsive Styles
+================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .weather-app {
+    padding: 20px;
+  }
+
+  .weather-app-data {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .weather-app-city {
+    font-size: 30px;
+  }
+
+  .weather-app-temperature {
+    font-size: 70px;
+  }
+
+  .weather-app-unit {
+    font-size: 24px;
+    top: -15px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-form-button {
+    width: 100%;
+  }
+
+  .weather-app-city {
+    font-size: 26px;
+  }
+
+  .weather-app-temperature {
+    font-size: 55px;
+  }
+
+  .weather-app-unit {
+    font-size: 20px;
+  }
 }
 
